@@ -1,0 +1,2399 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Registration — JTMUN XII</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070a;
+    color: #f4f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 6% 100px;
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border: 1px solid rgba(190,215,240,0.07);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    width: 650px;
+    height: 650px;
+    top: -330px;
+    right: -200px;
+    animation: floatOne 15s ease-in-out infinite;
+}
+
+body::after {
+    width: 500px;
+    height: 500px;
+    bottom: -260px;
+    left: -220px;
+    animation: floatTwo 18s ease-in-out infinite;
+}
+
+@keyframes floatOne {
+
+    0%, 100% {
+        transform: translate(0,0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-35px,30px) rotate(8deg);
+    }
+
+}
+
+@keyframes floatTwo {
+
+    0%, 100% {
+        transform: translate(0,0);
+    }
+
+    50% {
+        transform: translate(40px,-30px);
+    }
+
+}
+
+.header {
+    max-width: 1100px;
+    margin: auto;
+    padding: 45px 0 65px;
+    animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 55px;
+}
+
+.logo-wrap img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.logo-fallback {
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.logo-text {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #9ba8b6;
+}
+
+.back {
+    display: inline-block;
+    color: #8b98a7;
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: 0.3s;
+}
+
+.back:hover {
+    color: white;
+    transform: translateX(-5px);
+}
+
+.eyebrow {
+    color: #8493a5;
+    letter-spacing: 6px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(55px, 9vw, 105px);
+    letter-spacing: -5px;
+    line-height: 0.95;
+}
+
+.subtitle {
+    margin-top: 25px;
+    color: #8e9aa8;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.form-section {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 60px 0;
+    animation: fadeUp 0.8s ease;
+}
+
+.section-number {
+    color: #8391a1;
+    letter-spacing: 5px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 38px;
+    letter-spacing: -1px;
+    margin-bottom: 35px;
+}
+
+.field {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    color: #9ca8b6;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 19px;
+    background: #070a0e;
+    border: 1px solid #29313b;
+    color: white;
+    font-size: 17px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #d9e9f8;
+    box-shadow: 0 0 0 3px rgba(217,233,248,0.06);
+    transform: translateY(-1px);
+}
+
+select option {
+    background: #080b0f;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.requirement {
+    margin: 25px 0 35px;
+    padding: 20px;
+
+    border-left: 2px solid #b9cde0;
+
+    color: #8f9baa;
+    line-height: 1.7;
+
+    background: rgba(255,255,255,0.015);
+}
+
+.requirement strong {
+    color: #e7eef6;
+}
+
+.delegate-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.delegate-count {
+    font-size: 22px;
+    font-weight: 700;
+    min-width: 150px;
+    text-align: center;
+}
+
+.small-button {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid #536171;
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition: 0.25s;
+}
+
+.small-button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+.delegate-card {
+    border: 1px solid rgba(255,255,255,0.09);
+
+    padding: 30px;
+
+    margin-bottom: 18px;
+
+    background: rgba(255,255,255,0.015);
+
+    animation: delegateIn 0.45s ease;
+}
+
+@keyframes delegateIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.delegate-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.delegate-title h3 {
+    font-size: 22px;
+}
+
+.head-badge {
+    padding: 7px 11px;
+
+    background: #eaf4ff;
+    color: #05070a;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.button {
+    border: none;
+
+    padding: 19px 30px;
+
+    background: #eaf4ff;
+    color: #05070a;
+
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(200,225,255,0.12);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.message {
+    margin-top: 25px;
+    padding: 20px;
+
+    display: none;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    line-height: 1.6;
+}
+
+.message.error {
+    display: block;
+    color: #ffb6b6;
+}
+
+.message.success {
+    display: block;
+    color: #c4e7cc;
+}
+
+#reviewSection {
+    display: none;
+}
+
+.review-box {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.review-line {
+    padding: 20px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    color: #a3afbd;
+}
+
+.review-line strong {
+    color: white;
+}
+
+.review-delegate {
+    padding: 20px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.review-delegate strong {
+    color: white;
+}
+
+.review-buttons {
+    margin-top: 35px;
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#successScreen {
+    display: none;
+    text-align: center;
+    padding: 100px 20px;
+    animation: fadeUp 0.7s ease;
+}
+
+.success-mark {
+    width: 90px;
+    height: 90px;
+
+    border: 1px solid #d9e9f8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 30px;
+
+    font-size: 35px;
+
+    animation:
+        successPulse 1.5s ease infinite;
+}
+
+@keyframes successPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+#successScreen h2 {
+    margin-bottom: 15px;
+}
+
+#successScreen p {
+    color: #9ba8b6;
+    line-height: 1.7;
+}
+
+@media(max-width:750px) {
+
+    body {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .delegate-title {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .delegate-card {
+        padding: 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo-wrap">
+
+        <img
+            src="assets/logo.png"
+            alt="JTMUN XII"
+            onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';"
+        >
+
+        <div
+            class="logo-fallback"
+            id="logoFallback"
+            style="display:none;"
+        >
+            XII
+        </div>
+
+        <div class="logo-text">
+            JT MODEL UNITED NATIONS
+        </div>
+
+    </div>
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Back to JTMUN XII
+    </a>
+
+    <div class="eyebrow">
+        SCHOOL REGISTRATION
+    </div>
+
+    <h1>
+        Register a Team.
+    </h1>
+
+    <p class="subtitle">
+        Each team is registered separately.
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- ==================================================
+     SCHOOL
+================================================== -->
+
+<section class="form-section">
+
+    <div class="section-number">
+        01 / SCHOOL
+    </div>
+
+    <h2>
+        School Information
+    </h2>
+
+    <div class="field">
+
+        <label>
+            School Name
+        </label>
+
+        <input
+            id="schoolName"
+            type="text"
+            placeholder="Enter school name"
+            autocomplete="organization"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Team Name
+        </label>
+
+        <input
+            id="teamName"
+            type="text"
+            placeholder="e.g. JT Team A"
+        >
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Faculty Advisor
+        </label>
+
+        <input
+            id="facultyAdvisor"
+            type="text"
+            placeholder="Faculty advisor name"
+        >
+
+    </div>
+
+
+    <div class="two-column">
+
+        <div class="field">
+
+            <label>
+                Contact Email
+            </label>
+
+            <input
+                id="facultyEmail"
+                type="email"
+                placeholder="faculty@example.com"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Contact Number
+            </label>
+
+            <input
+                id="facultyContact"
+                type="tel"
+                placeholder="03XXXXXXXXX"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="requirement">
+
+        <strong>
+            Team Preferences
+        </strong>
+
+        <br><br>
+
+        These preferences apply to the
+        <strong>entire delegation/team</strong>.
+
+        <br><br>
+
+        Please provide:
+
+        <br><br>
+
+        • <strong>One Personality Preference</strong>
+
+        <br>
+
+        • <strong>Two Country Preferences</strong>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Personality / Allotment Preference
+        </label>
+
+        <input
+            id="personalityPreference"
+            type="text"
+            placeholder="Enter preferred personality"
+        >
+
+    </div>
+
+
+    <div class="two-column">
+
+        <div class="field">
+
+            <label>
+                Country Preference 1
+            </label>
+
+            <input
+                id="countryPreference1"
+                type="text"
+                placeholder="Enter first preferred country"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label>
+                Country Preference 2
+            </label>
+
+            <input
+                id="countryPreference2"
+                type="text"
+                placeholder="Enter second preferred country"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     DELEGATES
+================================================== -->
+
+<section class="form-section">
+
+    <div class="section-number">
+        02 / DELEGATES
+    </div>
+
+    <h2>
+        Delegation
+    </h2>
+
+
+    <div class="requirement">
+
+        A delegation must contain between
+        <strong>6 and 10 delegates</strong>.
+
+        <br><br>
+
+        The first delegate registered will be the
+        <strong>Head Delegate</strong>.
+
+        <br><br>
+
+        <strong>Head Delegate</strong> information includes:
+
+        <br>
+
+        Name, Contact Number, Email and Committee.
+
+        <br><br>
+
+        <strong>Delegates 2–10</strong> only require:
+
+        <br>
+
+        Name and Committee.
+
+        <br><br>
+
+        <strong>
+            United Nations Security Council (UNSC)
+        </strong>
+
+        is a compulsory dual-delegate committee and
+        must have <strong>exactly 2 delegates</strong>.
+
+        <br><br>
+
+        <strong>
+            Global Crisis Cabinet
+        </strong>
+
+        is compulsory and must have
+        <strong>exactly 1 delegate</strong>.
+
+    </div>
+
+
+    <div class="delegate-controls">
+
+        <button
+            type="button"
+            class="small-button"
+            onclick="removeDelegate()"
+        >
+            −
+        </button>
+
+
+        <div
+            class="delegate-count"
+            id="delegateCount"
+        >
+            6 Delegates
+        </div>
+
+
+        <button
+            type="button"
+            class="small-button"
+            onclick="addDelegate()"
+        >
+            +
+        </button>
+
+    </div>
+
+
+    <div id="delegatesContainer"></div>
+
+
+    <div class="requirement">
+
+        <strong>
+            Committee Requirements
+        </strong>
+
+        <br><br>
+
+        Every delegation must include:
+
+        <br><br>
+
+        • <strong>
+            2 delegates in United Nations Security Council (UNSC)
+        </strong>
+
+        <br>
+
+        • <strong>
+            1 delegate in Global Crisis Cabinet
+        </strong>
+
+        <br><br>
+
+        All other committees may only have
+        <strong>one delegate per team</strong>.
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     REVIEW
+================================================== -->
+
+<section class="form-section">
+
+    <button
+        type="button"
+        class="button"
+        onclick="reviewRegistration()"
+    >
+        REVIEW REGISTRATION
+    </button>
+
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+</section>
+
+
+<section
+    class="form-section"
+    id="reviewSection"
+>
+
+    <div class="section-number">
+        03 / REVIEW
+    </div>
+
+
+    <h2>
+        Registration Review
+    </h2>
+
+
+    <div
+        id="reviewBox"
+        class="review-box"
+    ></div>
+
+
+    <div class="review-buttons">
+
+        <button
+            type="button"
+            class="button"
+            onclick="editRegistration()"
+        >
+            EDIT
+        </button>
+
+
+        <button
+            type="button"
+            class="button"
+            id="confirmButton"
+            onclick="submitRegistration()"
+        >
+            CONFIRM REGISTRATION
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     SUCCESS
+================================================== -->
+
+<section
+    id="successScreen"
+>
+
+    <div class="success-mark">
+        ✓
+    </div>
+
+
+    <h2>
+        Registration Received
+    </h2>
+
+
+    <p id="successText">
+        Your registration has been received.
+    </p>
+
+</section>
+
+</main>
+
+
+<script>
+
+
+/* ==================================================
+   GOOGLE APPS SCRIPT API
+================================================== */
+
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzJsWYLFOCHi5owYo2y3YfvZHPSpumWDp4828C1lQza6YR_GJmCns_iA7R5B3mbdCEJdA/exec";
+
+
+/* ==================================================
+   COMMITTEES
+================================================== */
+
+const COMMITTEES = [
+
+    "United Nations Security Council (UNSC)",
+
+    "Global Crisis Cabinet",
+
+    "Eastern Europe High Command",
+
+    "Organisation of American States",
+
+    "All Parties Conference",
+
+    "World Bank",
+
+    "SOCHUM",
+
+    "SPECPOL",
+
+    "DISEC"
+
+];
+
+
+const UNSC =
+    "United Nations Security Council (UNSC)";
+
+
+const GLOBAL_CRISIS =
+    "Global Crisis Cabinet";
+
+
+/* ==================================================
+   DELEGATE COUNT
+================================================== */
+
+let delegateCount = 6;
+
+
+/* ==================================================
+   SAVE CURRENT DELEGATES
+================================================== */
+
+function getCurrentDelegateValues() {
+
+    const values = [];
+
+    const cards =
+        document.querySelectorAll(
+            ".delegate-card"
+        );
+
+
+    cards.forEach(
+        (card, index) => {
+
+            const delegate = {
+
+                name:
+                    card
+                        .querySelector(".delegate-name")
+                        .value
+                        .trim(),
+
+                committee:
+                    card
+                        .querySelector(".delegate-committee")
+                        .value
+
+            };
+
+
+            if (
+                index === 0
+            ) {
+
+                delegate.contact =
+                    card
+                        .querySelector(".delegate-contact")
+                        .value
+                        .trim();
+
+
+                delegate.email =
+                    card
+                        .querySelector(".delegate-email")
+                        .value
+                        .trim();
+
+            }
+
+
+            values.push(
+                delegate
+            );
+
+        }
+    );
+
+
+    return values;
+
+}
+
+
+/* ==================================================
+   RENDER DELEGATES
+================================================== */
+
+function renderDelegates(
+    previousValues = []
+) {
+
+    const container =
+        document.getElementById(
+            "delegatesContainer"
+        );
+
+
+    container.innerHTML = "";
+
+
+    for (
+        let i = 0;
+        i < delegateCount;
+        i++
+    ) {
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "delegate-card";
+
+
+        const title =
+            i === 0
+                ? "Head Delegate"
+                : "Delegate " + (i + 1);
+
+
+        const badge =
+            i === 0
+                ? `<span class="head-badge">HEAD DELEGATE</span>`
+                : "";
+
+
+        const old =
+            previousValues[i] || {};
+
+
+        /*
+        ==============================================
+        HEAD DELEGATE
+        ==============================================
+        */
+
+        if (
+            i === 0
+        ) {
+
+            card.innerHTML = `
+
+                <div class="delegate-title">
+
+                    <h3>
+                        ${title}
+                    </h3>
+
+                    ${badge}
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        class="delegate-name"
+                        type="text"
+                        placeholder="Head Delegate name"
+                        value="${escapeAttribute(old.name || "")}"
+                    >
+
+                </div>
+
+
+                <div class="two-column">
+
+                    <div class="field">
+
+                        <label>
+                            Contact Number
+                        </label>
+
+                        <input
+                            class="delegate-contact"
+                            type="tel"
+                            placeholder="03XXXXXXXXX"
+                            value="${escapeAttribute(old.contact || "")}"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            class="delegate-email"
+                            type="email"
+                            placeholder="delegate@example.com"
+                            value="${escapeAttribute(old.email || "")}"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Committee
+                    </label>
+
+                    <select
+                        class="delegate-committee"
+                    >
+
+                        <option value="">
+                            Choose your committee
+                        </option>
+
+                        ${COMMITTEES.map(
+                            committee =>
+
+                                `<option
+                                    value="${escapeAttribute(committee)}"
+                                    ${old.committee === committee ? "selected" : ""}
+                                >
+                                    ${escapeHTML(committee)}
+                                </option>`
+
+                        ).join("")}
+
+                    </select>
+
+                </div>
+
+            `;
+
+        }
+
+
+        /*
+        ==============================================
+        DELEGATES 2–10
+        ==============================================
+        */
+
+        else {
+
+            card.innerHTML = `
+
+                <div class="delegate-title">
+
+                    <h3>
+                        ${title}
+                    </h3>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        class="delegate-name"
+                        type="text"
+                        placeholder="Delegate name"
+                        value="${escapeAttribute(old.name || "")}"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Committee
+                    </label>
+
+                    <select
+                        class="delegate-committee"
+                    >
+
+                        <option value="">
+                            Choose your committee
+                        </option>
+
+                        ${COMMITTEES.map(
+                            committee =>
+
+                                `<option
+                                    value="${escapeAttribute(committee)}"
+                                    ${old.committee === committee ? "selected" : ""}
+                                >
+                                    ${escapeHTML(committee)}
+                                </option>`
+
+                        ).join("")}
+
+                    </select>
+
+                </div>
+
+            `;
+
+        }
+
+
+        container.appendChild(
+            card
+        );
+
+    }
+
+
+    document.getElementById(
+        "delegateCount"
+    ).textContent =
+        delegateCount + " Delegates";
+
+}
+
+
+/* ==================================================
+   ADD DELEGATE
+================================================== */
+
+function addDelegate() {
+
+    if (
+        delegateCount >= 10
+    ) {
+
+        showMessage(
+            "A delegation can have a maximum of 10 delegates.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const previousValues =
+        getCurrentDelegateValues();
+
+
+    delegateCount++;
+
+
+    renderDelegates(
+        previousValues
+    );
+
+}
+
+
+/* ==================================================
+   REMOVE DELEGATE
+================================================== */
+
+function removeDelegate() {
+
+    if (
+        delegateCount <= 6
+    ) {
+
+        showMessage(
+            "A delegation must have at least 6 delegates.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const previousValues =
+        getCurrentDelegateValues();
+
+
+    previousValues.pop();
+
+
+    delegateCount--;
+
+
+    renderDelegates(
+        previousValues
+    );
+
+}
+
+
+/* ==================================================
+   GET REGISTRATION DATA
+================================================== */
+
+function getRegistrationData() {
+
+    const delegates = [];
+
+
+    const cards =
+        document.querySelectorAll(
+            ".delegate-card"
+        );
+
+
+    cards.forEach(
+        (card, index) => {
+
+            const delegate = {
+
+                name:
+                    card
+                        .querySelector(
+                            ".delegate-name"
+                        )
+                        .value
+                        .trim(),
+
+                committee:
+                    card
+                        .querySelector(
+                            ".delegate-committee"
+                        )
+                        .value
+
+            };
+
+
+            /*
+            ==========================================
+            HEAD DELEGATE ONLY
+            ==========================================
+            */
+
+            if (
+                index === 0
+            ) {
+
+                delegate.contact =
+                    card
+                        .querySelector(
+                            ".delegate-contact"
+                        )
+                        .value
+                        .trim();
+
+
+                delegate.email =
+                    card
+                        .querySelector(
+                            ".delegate-email"
+                        )
+                        .value
+                        .trim();
+
+            }
+
+
+            delegates.push(
+                delegate
+            );
+
+        }
+    );
+
+
+    return {
+
+        registrationType:
+            "school",
+
+        schoolName:
+            document
+                .getElementById(
+                    "schoolName"
+                )
+                .value
+                .trim(),
+
+        teamName:
+            document
+                .getElementById(
+                    "teamName"
+                )
+                .value
+                .trim(),
+
+        facultyAdvisor:
+            document
+                .getElementById(
+                    "facultyAdvisor"
+                )
+                .value
+                .trim(),
+
+        facultyEmail:
+            document
+                .getElementById(
+                    "facultyEmail"
+                )
+                .value
+                .trim(),
+
+        facultyContact:
+            document
+                .getElementById(
+                    "facultyContact"
+                )
+                .value
+                .trim(),
+
+        personalityPreference:
+            document
+                .getElementById(
+                    "personalityPreference"
+                )
+                .value
+                .trim(),
+
+        countryPreference1:
+            document
+                .getElementById(
+                    "countryPreference1"
+                )
+                .value
+                .trim(),
+
+        countryPreference2:
+            document
+                .getElementById(
+                    "countryPreference2"
+                )
+                .value
+                .trim(),
+
+        delegates:
+            delegates
+
+    };
+
+}
+
+
+/* ==================================================
+   VALIDATE REGISTRATION
+================================================== */
+
+function validateRegistration(data) {
+
+    if (
+        !data.schoolName
+    ) {
+
+        return "Please enter the school name.";
+
+    }
+
+
+    if (
+        !data.teamName
+    ) {
+
+        return "Please enter the team name.";
+
+    }
+
+
+    if (
+        !data.facultyAdvisor
+    ) {
+
+        return "Please enter the faculty advisor.";
+
+    }
+
+
+    if (
+        !data.facultyEmail
+    ) {
+
+        return "Please enter the faculty advisor email.";
+
+    }
+
+
+    if (
+        !data.facultyContact
+    ) {
+
+        return "Please enter the faculty advisor contact number.";
+
+    }
+
+
+    if (
+        !data.personalityPreference
+    ) {
+
+        return "Please enter the Personality / Allotment Preference.";
+
+    }
+
+
+    if (
+        !data.countryPreference1
+    ) {
+
+        return "Please enter Country Preference 1.";
+
+    }
+
+
+    if (
+        !data.countryPreference2
+    ) {
+
+        return "Please enter Country Preference 2.";
+
+    }
+
+
+    if (
+        data.delegates.length < 6 ||
+        data.delegates.length > 10
+    ) {
+
+        return "Your delegation must contain between 6 and 10 delegates.";
+
+    }
+
+
+    const head =
+        data.delegates[0];
+
+
+    if (
+        !head.name
+    ) {
+
+        return "Please enter the Head Delegate name.";
+
+    }
+
+
+    if (
+        !head.contact
+    ) {
+
+        return "Please enter the Head Delegate contact number.";
+
+    }
+
+
+    if (
+        !head.email
+    ) {
+
+        return "Please enter the Head Delegate email.";
+
+    }
+
+
+    if (
+        !head.committee
+    ) {
+
+        return "Please select a committee for the Head Delegate.";
+
+    }
+
+
+    for (
+        let i = 1;
+        i < data.delegates.length;
+        i++
+    ) {
+
+        const delegate =
+            data.delegates[i];
+
+
+        if (
+            !delegate.name
+        ) {
+
+            return (
+                "Please enter the name of Delegate " +
+                (i + 1) +
+                "."
+            );
+
+        }
+
+
+        if (
+            !delegate.committee
+        ) {
+
+            return (
+                "Please select a committee for Delegate " +
+                (i + 1) +
+                "."
+            );
+
+        }
+
+    }
+
+
+    /*
+    ==============================================
+    COMMITTEE VALIDATION
+    ==============================================
+    */
+
+    const committees =
+        data.delegates.map(
+            delegate =>
+                delegate.committee
+        );
+
+
+    for (
+        let i = 0;
+        i < committees.length;
+        i++
+    ) {
+
+        if (
+            !COMMITTEES.includes(
+                committees[i]
+            )
+        ) {
+
+            return (
+                committees[i] +
+                " is not a valid JTMUN XII committee."
+            );
+
+        }
+
+    }
+
+
+    /*
+    ==============================================
+    UNSC
+    ==============================================
+    */
+
+    const unscCount =
+        committees.filter(
+            committee =>
+                committee === UNSC
+        ).length;
+
+
+    if (
+        unscCount !== 2
+    ) {
+
+        return (
+            "United Nations Security Council (UNSC) " +
+            "is a compulsory dual-delegate committee and " +
+            "must have exactly 2 delegates."
+        );
+
+    }
+
+
+    /*
+    ==============================================
+    GLOBAL CRISIS
+    ==============================================
+    */
+
+    const globalCrisisCount =
+        committees.filter(
+            committee =>
+                committee === GLOBAL_CRISIS
+        ).length;
+
+
+    if (
+        globalCrisisCount !== 1
+    ) {
+
+        return (
+            "Every delegation must include exactly 1 delegate in " +
+            "Global Crisis Cabinet."
+        );
+
+    }
+
+
+    /*
+    ==============================================
+    DUPLICATE COMMITTEES
+    ==============================================
+    */
+
+    const committeeCounts = {};
+
+
+    committees.forEach(
+        committee => {
+
+            if (
+                !committeeCounts[committee]
+            ) {
+
+                committeeCounts[committee] = 0;
+
+            }
+
+
+            committeeCounts[committee]++;
+
+        }
+    );
+
+
+    for (
+        const committee in committeeCounts
+    ) {
+
+        if (
+            committee === UNSC
+        ) {
+
+            if (
+                committeeCounts[committee] !== 2
+            ) {
+
+                return "UNSC must have exactly 2 delegates.";
+
+            }
+
+        }
+
+        else if (
+            committeeCounts[committee] > 1
+        ) {
+
+            return (
+                "Only one delegate may be assigned to " +
+                committee +
+                "."
+            );
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/* ==================================================
+   REVIEW
+================================================== */
+
+function reviewRegistration() {
+
+    const data =
+        getRegistrationData();
+
+
+    const error =
+        validateRegistration(
+            data
+        );
+
+
+    if (
+        error
+    ) {
+
+        showMessage(
+            error,
+            true
+        );
+
+        return;
+
+    }
+
+
+    showMessage(
+        "",
+        false
+    );
+
+
+    const review =
+        document.getElementById(
+            "reviewBox"
+        );
+
+
+    let html = "";
+
+
+    html += `
+
+        <div class="review-line">
+            <strong>School:</strong>
+            ${escapeHTML(data.schoolName)}
+        </div>
+
+        <div class="review-line">
+            <strong>Team:</strong>
+            ${escapeHTML(data.teamName)}
+        </div>
+
+        <div class="review-line">
+            <strong>Faculty Advisor:</strong>
+            ${escapeHTML(data.facultyAdvisor)}
+        </div>
+
+        <div class="review-line">
+            <strong>Faculty Email:</strong>
+            ${escapeHTML(data.facultyEmail)}
+        </div>
+
+        <div class="review-line">
+            <strong>Faculty Contact:</strong>
+            ${escapeHTML(data.facultyContact)}
+        </div>
+
+        <div class="review-line">
+            <strong>Personality / Allotment Preference:</strong>
+            ${escapeHTML(data.personalityPreference)}
+        </div>
+
+        <div class="review-line">
+            <strong>Country Preference 1:</strong>
+            ${escapeHTML(data.countryPreference1)}
+        </div>
+
+        <div class="review-line">
+            <strong>Country Preference 2:</strong>
+            ${escapeHTML(data.countryPreference2)}
+        </div>
+
+        <div class="review-line">
+            <strong>Delegates:</strong>
+            ${data.delegates.length}
+        </div>
+
+    `;
+
+
+    /*
+    ==============================================
+    REVIEW DELEGATES
+    ==============================================
+    */
+
+    data.delegates.forEach(
+        (delegate, index) => {
+
+            const role =
+                index === 0
+                    ? "Head Delegate"
+                    : "Delegate " + (index + 1);
+
+
+            if (
+                index === 0
+            ) {
+
+                html += `
+
+                    <div class="review-delegate">
+
+                        <strong>
+                            ${role}
+                        </strong>
+
+                        — ${escapeHTML(delegate.name)}
+
+                        <br>
+
+                        ${escapeHTML(delegate.committee)}
+
+                        <br>
+
+                        <small>
+
+                            ${escapeHTML(delegate.email)}
+
+                            ·
+
+                            ${escapeHTML(delegate.contact)}
+
+                        </small>
+
+                    </div>
+
+                `;
+
+            }
+
+            else {
+
+                html += `
+
+                    <div class="review-delegate">
+
+                        <strong>
+                            ${role}
+                        </strong>
+
+                        — ${escapeHTML(delegate.name)}
+
+                        <br>
+
+                        ${escapeHTML(delegate.committee)}
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+    );
+
+
+    review.innerHTML =
+        html;
+
+
+    document.getElementById(
+        "reviewSection"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "reviewSection"
+    ).scrollIntoView({
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+/* ==================================================
+   EDIT
+================================================== */
+
+function editRegistration() {
+
+    document.getElementById(
+        "reviewSection"
+    ).style.display =
+        "none";
+
+
+    window.scrollTo({
+
+        top:
+            0,
+
+        behavior:
+            "smooth"
+
+    });
+
+}
+
+
+/* ==================================================
+   SUBMIT
+================================================== */
+
+async function submitRegistration() {
+
+    const data =
+        getRegistrationData();
+
+
+    const error =
+        validateRegistration(
+            data
+        );
+
+
+    if (
+        error
+    ) {
+
+        showMessage(
+            error,
+            true
+        );
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "confirmButton"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "SUBMITTING...";
+
+
+    try {
+
+        /*
+        ==============================================
+        SEND JSON
+        ==============================================
+        */
+
+        const apiResponse =
+            await fetch(
+
+                SCRIPT_URL,
+
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body:
+                        JSON.stringify(
+                            data
+                        )
+
+                }
+
+            );
+
+
+        /*
+        ==============================================
+        CHECK HTTP RESPONSE
+        ==============================================
+        */
+
+        if (
+            !apiResponse.ok
+        ) {
+
+            throw new Error(
+                "Server returned HTTP " +
+                apiResponse.status
+            );
+
+        }
+
+
+        /*
+        ==============================================
+        READ RESPONSE
+        ==============================================
+        */
+
+        const result =
+            await apiResponse.json();
+
+
+        /*
+        ==============================================
+        BACKEND ERROR
+        ==============================================
+        */
+
+        if (
+            !result.success
+        ) {
+
+            throw new Error(
+
+                result.error ||
+                "Registration could not be submitted."
+
+            );
+
+        }
+
+
+        /*
+        ==============================================
+        HIDE REVIEW
+        ==============================================
+        */
+
+        document.getElementById(
+            "reviewSection"
+        ).style.display =
+            "none";
+
+
+        /*
+        ==============================================
+        SHOW SUCCESS
+        ==============================================
+        */
+
+        document.getElementById(
+            "successScreen"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "successText"
+        ).textContent =
+
+            "Your team has been registered successfully. " +
+            "Your Team ID is " +
+            result.teamID +
+            ".";
+
+
+        document.getElementById(
+            "successScreen"
+        ).scrollIntoView({
+
+            behavior:
+                "smooth"
+
+        });
+
+
+        button.textContent =
+            "REGISTRATION RECEIVED";
+
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "JTMUN SUBMISSION ERROR:",
+            error
+        );
+
+
+        showMessage(
+
+            "Registration could not be submitted. " +
+            error.message,
+
+            true
+
+        );
+
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "CONFIRM REGISTRATION";
+
+    }
+
+}
+
+
+/* ==================================================
+   MESSAGE
+================================================== */
+
+function showMessage(
+    text,
+    isError
+) {
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    if (
+        !text
+    ) {
+
+        message.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    message.textContent =
+        text;
+
+
+    message.className =
+
+        "message " +
+
+        (
+            isError
+                ? "error"
+                : "success"
+        );
+
+
+    message.style.display =
+        "block";
+
+
+    message.scrollIntoView({
+
+        behavior:
+            "smooth",
+
+        block:
+            "center"
+
+    });
+
+}
+
+
+/* ==================================================
+   ESCAPE HTML
+================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* ==================================================
+   ESCAPE ATTRIBUTE
+================================================== */
+
+function escapeAttribute(value) {
+
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+/* ==================================================
+   INITIALISE
+================================================== */
+
+renderDelegates();
+
+</script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Stay Tuned — JTMUN XII</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background: #05070a;
+
+    color: #f4f7fb;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================
+   BACKGROUND ORBITS
+========================= */
+
+.background-orbit {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(210,225,245,0.14);
+
+    pointer-events: none;
+
+}
+
+
+.orbit-one {
+
+    width: 750px;
+
+    height: 750px;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        spin 30s linear infinite;
+
+}
+
+
+.orbit-two {
+
+    width: 520px;
+
+    height: 520px;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-color:
+        rgba(210,225,245,0.09);
+
+    animation:
+        spinReverse 22s linear infinite;
+
+}
+
+
+.orbit-three {
+
+    width: 950px;
+
+    height: 950px;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-color:
+        rgba(210,225,245,0.05);
+
+    animation:
+        floatOrbit 10s ease-in-out infinite;
+
+}
+
+
+.orbit-one::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+
+    height: 13px;
+
+    background: #eaf4ff;
+
+    border-radius: 50%;
+
+    top: 50px;
+
+    left: 50px;
+
+    box-shadow:
+        0 0 25px
+        rgba(220,235,255,0.8);
+
+}
+
+
+.orbit-two::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+
+    height: 9px;
+
+    background: #aebed0;
+
+    border-radius: 50%;
+
+    bottom: 40px;
+
+    right: 80px;
+
+    box-shadow:
+        0 0 20px
+        rgba(220,235,255,0.6);
+
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes spin {
+
+    from {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes spinReverse {
+
+    from {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+
+    }
+
+    to {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+
+    }
+
+}
+
+
+@keyframes floatOrbit {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(
+                calc(-50% + 20px),
+                calc(-50% - 15px)
+            )
+            scale(1.03);
+
+    }
+
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    padding:
+        20px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background:
+        rgba(5,7,10,0.65);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    z-index: 10;
+
+}
+
+
+.nav-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+}
+
+
+.nav-logo img {
+
+    width: 42px;
+
+    height: 42px;
+
+    object-fit: contain;
+
+}
+
+
+.nav-logo span {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+}
+
+
+.back-button {
+
+    padding:
+        11px 20px;
+
+    border:
+        1px solid
+        rgba(234,244,255,0.25);
+
+    color: #eaf4ff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.back-button:hover {
+
+    background:
+        rgba(234,244,255,0.08);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.3);
+
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        140px 6%
+        80px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.content {
+
+    max-width: 900px;
+
+    animation:
+        fadeUp
+        1s ease forwards;
+
+}
+
+
+.logo {
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: contain;
+
+    margin-bottom: 35px;
+
+    filter:
+        drop-shadow(
+            0 15px 35px
+            rgba(210,230,255,0.1)
+        );
+
+}
+
+
+.eyebrow {
+
+    color: #8292a4;
+
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 25px;
+
+}
+
+
+h1 {
+
+    font-size:
+        clamp(65px, 12vw, 150px);
+
+    letter-spacing: -7px;
+
+    line-height: 0.9;
+
+}
+
+
+h1 span {
+
+    color: #aebed0;
+
+}
+
+
+.description {
+
+    max-width: 600px;
+
+    margin:
+        35px auto 0;
+
+    color: #8996a5;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+}
+
+
+.return-button {
+
+    display: inline-block;
+
+    margin-top: 45px;
+
+    padding:
+        17px 30px;
+
+    background: #eaf4ff;
+
+    color: #05070a;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.return-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    box-shadow:
+        0 18px 40px
+        rgba(200,225,255,0.15);
+
+}
+
+
+/* =========================
+   XII DECORATION
+========================= */
+
+.roman {
+
+    position: absolute;
+
+    font-size:
+        clamp(180px, 30vw, 450px);
+
+    font-weight: 700;
+
+    color:
+        rgba(220,230,240,0.025);
+
+    letter-spacing: -25px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: -1;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    nav {
+
+        padding:
+            16px 6%;
+
+    }
+
+
+    .nav-logo span {
+
+        font-size: 15px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .nav-logo img {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .back-button {
+
+        padding:
+            10px 14px;
+
+        font-size: 11px;
+
+    }
+
+
+    .logo {
+
+        width: 95px;
+
+        height: 95px;
+
+    }
+
+
+    h1 {
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .description {
+
+        font-size: 16px;
+
+    }
+
+
+    .orbit-one {
+
+        width: 500px;
+
+        height: 500px;
+
+    }
+
+
+    .orbit-two {
+
+        width: 350px;
+
+        height: 350px;
+
+    }
+
+
+    .orbit-three {
+
+        width: 650px;
+
+        height: 650px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a
+        href="index.html"
+        class="nav-logo"
+    >
+
+        <img
+            src="logo.png"
+            alt="JTMUN XII Logo"
+        >
+
+        <span>
+            JTMUN XII
+        </span>
+
+    </a>
+
+
+    <a
+        href="index.html#committees"
+        class="back-button"
+    >
+
+        ← BACK TO COMMITTEES
+
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div
+    class="background-orbit orbit-one"
+></div>
+
+
+<div
+    class="background-orbit orbit-two"
+></div>
+
+
+<div
+    class="background-orbit orbit-three"
+></div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+    <div class="roman">
+        XII
+    </div>
+
+
+    <div class="content">
+
+
+        <img
+            src="logo.png"
+            alt="JTMUN XII Logo"
+            class="logo"
+        >
+
+
+        <div class="eyebrow">
+
+            JT MODEL UNITED NATIONS
+
+        </div>
+
+
+        <h1>
+
+            STAY<br>
+
+            <span>TUNED.</span>
+
+        </h1>
+
+
+        <p class="description">
+
+            The study guides for JTMUN XII
+            are currently being prepared.
+
+            Please check back soon for
+            committee-specific materials,
+            background information and
+            further conference resources.
+
+        </p>
+
+
+        <a
+            href="index.html#committees"
+            class="return-button"
+        >
+
+            EXPLORE COMMITTEES
+
+        </a>
+
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

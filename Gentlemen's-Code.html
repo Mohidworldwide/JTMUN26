@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Gentlemen's Code — JTMUN XII</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070a;
+    color: #f4f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 6%;
+
+    background: rgba(5,7,10,0.78);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+}
+
+
+/* =========================
+   NAV LOGO
+========================= */
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: white;
+}
+
+.nav-logo img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
+/*
+   CHANGED:
+   The navbar title now uses the same
+   clean style as the main title.
+   Extreme letter spacing removed.
+*/
+
+.logo-text {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: 0;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+
+    list-style: none;
+}
+
+.nav-links a {
+    color: #aab4c1;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+
+/* =========================
+   NAV REGISTER
+========================= */
+
+.nav-button {
+    padding: 11px 20px;
+
+    background: #eaf4ff;
+    color: #05070a !important;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(200,225,255,0.12);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 75vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        150px 6%
+        90px;
+
+    position: relative;
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+    max-width: 1000px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   HERO LOGO
+========================= */
+
+.hero-logo {
+    width: 125px;
+    height: 125px;
+
+    object-fit: contain;
+
+    margin-bottom: 35px;
+
+    filter:
+        drop-shadow(
+            0 15px 35px
+            rgba(210,230,255,0.08)
+        );
+
+    animation:
+        logoAppear 1s ease forwards;
+}
+
+
+@keyframes logoAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================
+   EYEBROW
+========================= */
+
+.eyebrow {
+    color: #94a4b6;
+
+    letter-spacing: 7px;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+
+    animation:
+        fadeUp 1s ease forwards;
+}
+
+
+/* =========================
+   HERO TITLE
+========================= */
+
+.hero h1 {
+
+    font-size:
+        clamp(55px, 10vw, 125px);
+
+    line-height: 0.9;
+
+    letter-spacing: -6px;
+
+    animation:
+        fadeUp 1.1s ease forwards;
+}
+
+.hero h1 span {
+    color: #aebed0;
+}
+
+
+/* =========================
+   HERO SUBTITLE
+========================= */
+
+.hero-subtitle {
+
+    margin:
+        35px auto 0;
+
+    max-width: 720px;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #8996a5;
+
+    animation:
+        fadeUp 1.3s ease forwards;
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons {
+
+    margin-top: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp 1.5s ease forwards;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button {
+
+    display: inline-block;
+
+    padding:
+        16px 26px;
+
+    text-decoration: none;
+
+    background: #eaf4ff;
+
+    color: #05070a;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border:
+        1px solid #eaf4ff;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.button:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(200,225,255,0.12);
+}
+
+.button.secondary {
+
+    background: transparent;
+
+    color: #eaf4ff;
+}
+
+
+/* =========================
+   DOCUMENT SECTION
+========================= */
+
+.document-section {
+
+    padding:
+        80px 8%
+        130px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.introduction {
+
+    max-width: 850px;
+
+    margin:
+        0 auto 80px;
+
+    text-align: center;
+}
+
+.introduction h2 {
+
+    font-size:
+        clamp(42px, 6vw, 75px);
+
+    letter-spacing: -4px;
+
+    margin-bottom: 30px;
+}
+
+.introduction p {
+
+    color: #929eac;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================
+   CODE CONTAINER
+========================= */
+
+.code-container {
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   CODE CARD
+========================= */
+
+.code-card {
+
+    position: relative;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(210,225,245,0.10);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.012)
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+
+    overflow: hidden;
+}
+
+.code-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(210,225,245,0.08);
+
+    pointer-events: none;
+
+    transition:
+        transform 0.5s ease;
+}
+
+.code-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(220,235,250,0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.018)
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.30);
+}
+
+.code-card:hover::before {
+
+    transform:
+        scale(1.25);
+}
+
+
+/* =========================
+   CODE HEADER
+========================= */
+
+.code-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    margin-bottom: 25px;
+}
+
+.code-number {
+
+    min-width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(220,235,250,0.16);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color: #aebed0;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.code-header h3 {
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    color: #f4f7fb;
+}
+
+
+/* =========================
+   CLAUSES
+========================= */
+
+.clauses {
+
+    padding-left: 67px;
+}
+
+.clause {
+
+    display: grid;
+
+    grid-template-columns:
+        28px 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 17px;
+
+    color: #929eac;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+.clause:last-child {
+    margin-bottom: 0;
+}
+
+.clause-letter {
+
+    color: #aebed0;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   FINAL STATEMENT
+========================= */
+
+.final-statement {
+
+    max-width: 850px;
+
+    margin:
+        70px auto 0;
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+        rgba(255,255,255,0.015);
+}
+
+.final-statement .eyebrow {
+
+    margin-bottom: 18px;
+}
+
+.final-statement h3 {
+
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.final-statement p {
+
+    color: #8996a5;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding:
+        45px 8%;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #6f7b89;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   FADE UP
+========================= */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px) {
+
+    nav {
+
+        padding:
+            15px 5%;
+    }
+
+    .nav-links {
+
+        display: none;
+    }
+
+    .logo-text {
+
+        font-size: 16px;
+
+        letter-spacing: 0;
+    }
+
+    .nav-logo img {
+
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero {
+
+        min-height: 70vh;
+
+        padding:
+            130px 6%
+            80px;
+    }
+
+    .hero-logo {
+
+        width: 105px;
+        height: 105px;
+    }
+
+    .hero h1 {
+
+        letter-spacing:
+            -4px;
+    }
+
+    .document-section {
+
+        padding:
+            75px 6%
+            90px;
+    }
+
+    .introduction {
+
+        margin-bottom:
+            55px;
+    }
+
+    .introduction h2 {
+
+        letter-spacing:
+            -3px;
+    }
+
+    .introduction p {
+
+        font-size:
+            16px;
+    }
+
+    .code-card {
+
+        padding:
+            28px 22px;
+    }
+
+    .code-header {
+
+        gap: 14px;
+    }
+
+    .code-number {
+
+        min-width: 38px;
+        height: 38px;
+
+        font-size:
+            10px;
+    }
+
+    .code-header h3 {
+
+        font-size:
+            21px;
+    }
+
+    .clauses {
+
+        padding-left:
+            0;
+
+        margin-top:
+            20px;
+    }
+
+    .clause {
+
+        grid-template-columns:
+            24px 1fr;
+
+        font-size:
+            15px;
+
+        line-height:
+            1.7;
+    }
+
+    .final-statement {
+
+        padding:
+            35px 22px;
+    }
+
+    .final-statement h3 {
+
+        font-size:
+            26px;
+    }
+
+    footer {
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        text-align:
+            center;
+    }
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+```
+<a
+    href="index.html"
+    class="nav-logo"
+>
+
+    <img
+        src="logo.png"
+        alt="JTMUN XII Logo"
+    >
+
+    <div class="logo-text">
+        JTMUN XII
+    </div>
+
+</a>
+
+
+<ul class="nav-links">
+
+    <li>
+        <a href="index.html">
+            Home
+        </a>
+    </li>
+
+    <li>
+        <a href="index.html#event">
+            Event
+        </a>
+    </li>
+
+    <li>
+        <a href="index.html#committees">
+            Committees
+        </a>
+    </li>
+
+    <li>
+        <a href="index.html#contact">
+            Contact
+        </a>
+    </li>
+
+    <li>
+        <a href="#code">
+            Code of Conduct
+        </a>
+    </li>
+
+</ul>
+
+
+<a
+    href="school.html"
+    class="nav-button"
+>
+    Register
+</a>
+```
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+```
+<div class="hero-content">
+
+    <img
+        src="logo.png"
+        alt="JTMUN XII Logo"
+        class="hero-logo"
+    >
+
+    <div class="eyebrow">
+        JT MODEL UNITED NATIONS XII
+    </div>
+
+    <h1>
+        THE<br>
+        <span>GENTLEMEN'S CODE</span>
+    </h1>
+
+    <p class="hero-subtitle">
+        The official code of conduct governing
+        dignity, diplomacy, respect and
+        professionalism at JTMUN XII.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a
+            href="#code"
+            class="button"
+        >
+            READ THE CODE
+        </a>
+
+        <a
+            href="index.html"
+            class="button secondary"
+        >
+            RETURN HOME
+        </a>
+
+    </div>
+
+</div>
+```
+
+</header>
+
+<!-- =========================
+     CODE
+========================= -->
+
+<section
+    id="code"
+    class="document-section"
+>
+
+```
+<!-- INTRODUCTION -->
+
+<div class="introduction reveal">
+
+    <h2>
+        The Gentlemen's Code
+    </h2>
+
+</div>
+
+
+<!-- CODE CONTAINER -->
+
+<div class="code-container">
+
+
+    <!-- =========================
+         01
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                01
+            </div>
+
+            <h3>
+                Dignity of Office
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    The delegates are expected to behave
+                    with the dignity of an ambassador.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Dressing is to be done professionally
+                    and in such a way that it conveys
+                    dignity in relation to the represented
+                    organization.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    This may be done in either western-style
+                    suits and ties or eastern styles.
+                    Dignity in posture, bearing, and conduct
+                    is also a requirement.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">d.</span>
+                <p>
+                    It should be kept in mind that the
+                    delegates represent their nations
+                    or organizations.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         02
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                02
+            </div>
+
+            <h3>
+                Respect and Cultural Sensitivity
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Delegates will show respect and
+                    tolerance for people from all
+                    backgrounds, cultures, and viewpoints.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    The right to privacy and personal
+                    space should always be respected.
+                    Offensive language, cultural
+                    insensitivity, bullying, harassment,
+                    discrimination, or personal attack
+                    is not allowed.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    Delegates will always use appropriate
+                    language when speaking or writing.
+                    Abusive language will not be accepted.
+                    Delegates will be aware of their
+                    personal space and not behave in such
+                    a way as to make others feel
+                    uncomfortable.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         03
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                03
+            </div>
+
+            <h3>
+                Prohibition of Intimidation and Impropriety
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    All forms of bullying, pressuring,
+                    or threatening behavior are contrary
+                    to diplomatic procedures and can lead
+                    to instant expulsion from the
+                    negotiations.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Disputes between delegates are
+                    expected to be settled through
+                    discussion and persuasion rather
+                    than aggression.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    Aggressive behavior, whether physical,
+                    verbal, or emotional, against another
+                    delegate, member of the Secretariat,
+                    Directorate, or conference staff is
+                    strictly prohibited.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         04
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                04
+            </div>
+
+            <h3>
+                Speech and Diplomacy
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    The delegates are expected to address
+                    all proceedings in a polite and
+                    courteous manner.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Yelling, interrupting, or dominating
+                    the discussion by use of loud speech
+                    is considered rude behavior.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    The delegates are required to behave
+                    in a manner that befits their
+                    diplomatic role, especially during
+                    heated discussions.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         05
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                05
+            </div>
+
+            <h3>
+                Professional Conduct
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Delegates should attend all committee
+                    meetings on time and follow the set
+                    schedule of the conference.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Delegates should address the Dais
+                    with respect since it is the custodian
+                    of the debate.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    Professionalism is necessary in
+                    behavior both in and out of committee
+                    meetings, since it represents the
+                    institution the delegates belong to.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">d.</span>
+                <p>
+                    Delegates are supposed to cooperate
+                    with the Secretariat, Directorate,
+                    ACDs, Chairs, and all other members
+                    of the management.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">e.</span>
+                <p>
+                    Non-cooperation will lead to warnings
+                    and eventual disqualification from
+                    the conference.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">f.</span>
+                <p>
+                    Delegates should wear delegate ID
+                    badges during the whole period of
+                    the conference.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">g.</span>
+                <p>
+                    Delegates are supposed to be present
+                    and punctual in the conference.
+                    Noncompliance to the set schedule may
+                    lead to suitable punishments.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         06
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                06
+            </div>
+
+            <h3>
+                Confidentiality and Discretion
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    The talks that take place within the
+                    committee are supposed to be taken
+                    seriously and carefully.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    There shall be no leaks of confidential
+                    information that are talked about in
+                    the conference, whether through talks
+                    or writing of draft resolutions.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    Any misappropriation of information,
+                    whether spoken or written, for personal
+                    gain and/or against another delegate
+                    is not allowed.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">d.</span>
+                <p>
+                    Any confidential information should
+                    not be revealed to any outsiders to
+                    the conference.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         07
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                07
+            </div>
+
+            <h3>
+                Use of Devices and Materials
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    The use of mobile phones, cameras,
+                    or laptops during formal committee
+                    sessions is not allowed except when
+                    explicitly authorized by the management.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Speeches are to be made without the
+                    help of electronic gadgets.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    The delegates are forbidden to take
+                    photographs or videos within committee
+                    chambers without prior permission of
+                    the management.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">d.</span>
+                <p>
+                    The delegates are required to report
+                    to the Secretariat or the members of
+                    the management if they want to be
+                    exempted from being photographed or
+                    videotaped during the conference.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">e.</span>
+                <p>
+                    No audiovisual, photographic, or
+                    graphic material such as drawings
+                    shall be taken without prior permission
+                    of the management.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         08
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                08
+            </div>
+
+            <h3>
+                Lobbying Etiquette
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Lobbying shall only occur at designated
+                    times and in designated spaces.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Any attempt to lobby in a manner that
+                    circumvents fairness shall be considered
+                    a breach of the Code and may affect
+                    awards.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">c.</span>
+                <p>
+                    Delegates must maintain a respectful
+                    distance and composure during
+                    unmoderated caucuses to ensure
+                    orderly and safe interaction.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         09
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                09
+            </div>
+
+            <h3>
+                Prohibition of Substances
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    The possession or use of electronic
+                    smoking devices, tobacco, or any
+                    nicotine-related substance is strictly
+                    prohibited on the premises.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         10
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                10
+            </div>
+
+            <h3>
+                Financial Integrity
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Delegation fees must be paid in full
+                    before the commencement of the
+                    conference. Failure to comply may
+                    result in restriction from participation.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         11
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                11
+            </div>
+
+            <h3>
+                Authenticity of Work
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Pre-drafted resolutions and directives
+                    are strictly forbidden. All documents
+                    must originate from a genuine debate
+                    within the committee. Any violation
+                    will result in severe sanctions.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =========================
+         12
+    ========================= -->
+
+    <article class="code-card reveal">
+
+        <div class="code-header">
+
+            <div class="code-number">
+                12
+            </div>
+
+            <h3>
+                Representation and Character
+            </h3>
+
+        </div>
+
+
+        <div class="clauses">
+
+            <div class="clause">
+                <span class="clause-letter">a.</span>
+                <p>
+                    Delegates shall remain in character
+                    throughout the conference and shall
+                    faithfully represent the position of
+                    their assigned country or institution,
+                    regardless of their personal beliefs
+                    or opinions.
+                </p>
+            </div>
+
+            <div class="clause">
+                <span class="clause-letter">b.</span>
+                <p>
+                    Delegates must ensure that personal
+                    views do not interfere with their
+                    responsibility to accurately represent
+                    their assigned position.
+                </p>
+            </div>
+
+        </div>
+
+    </article>
+
+
+</div>
+
+
+<!-- =========================
+     FINAL STATEMENT
+========================= -->
+
+<div class="final-statement reveal">
+
+    <div class="eyebrow">
+        JTMUN XII
+    </div>
+
+    <h3>
+        Diplomacy Begins With Conduct.
+    </h3>
+
+    <p>
+        The Gentlemen's Code exists to preserve
+        the dignity, equality, respect and
+        professionalism that define the JTMUN Society.
+        Every delegate is expected to uphold these
+        principles throughout the conference.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+```
+<div>
+    JTMUN XII
+</div>
+
+<div>
+    JT Model United Nations
+</div>
+```
+
+</footer>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+</script>
+
+</body>
+
+</html>
